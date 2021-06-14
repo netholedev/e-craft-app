@@ -1,0 +1,20 @@
+.auth {
+  &-background {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    /*
+  @media screen and (max-width: 1023px) {
+    display: none;
+  }
+  */
+  }
+
+  &-form {
+    padding: 3rem;
+
+    &-error-alert {
+      margin: 1rem 0;
+    }
+  }
+}
