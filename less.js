@@ -3,12 +3,16 @@ const chokidar = require('chokidar');
 const less = require('less');
 const fs = require('fs');
 
-const input = './src/scss/antd.less';
-const output = './src/scss/antd.css';
+const inputLight = './src/scss/antd-light.less';
+const inputDark = './src/scss/antd-dark.less';
+const outputLight = './public/antd-light.css';
+const outputDark = './public/antd-dark.css';
 
-compile(input, output);
+compile(inputLight, outputLight);
+compile(inputDark, outputDark);
 
-chokidar.watch(input).on('change', (path) => compile(path, output));
+chokidar.watch(inputLight).on('change', (path) => compile(path, outputLight));
+chokidar.watch(inputDark).on('change', (path) => compile(path, outputDark));
 
 function compile(path, output) {
   const lessInput = fs.readFileSync(path, 'utf-8');

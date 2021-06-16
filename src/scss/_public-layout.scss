@@ -1,0 +1,19 @@
+.public-layout {
+  min-height: 100vh;
+
+  &--left {
+    max-width: 400px;
+    padding: 0 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &--right {
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    position: fixed;
+    background-color: $light-purple;
+  }
+}

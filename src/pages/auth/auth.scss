@@ -18,3 +18,18 @@
     }
   }
 }
+
+.sign-up-text {
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  right: 3rem;
+  top: 2rem;
+}
+
+.sign-in-logo {
+  height: 3rem;
+  margin-bottom: 4.5rem;
+}

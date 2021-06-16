@@ -1,31 +1,13 @@
-import axios from 'axios';
-import { API_URL } from '../constants';
+import { BaseService } from './_base.service';
 
-export async function login(body: { email: string; password: string }) {
-  const { data: loginData } = await axios.post(`${API_URL}/auth/login`, body);
-  localStorage.setItem('token', loginData.data.token);
-  const { data: profileData } = await profile();
-  return profileData.data;
-}
-
-export async function profile() {
-  return axios.get(`${API_URL}/auth/profile`, { headers: authHeader() });
-}
-
-export async function logout() {
-  localStorage.removeItem('token');
-}
-
-export function getCurrentUser() {
-  return localStorage.getItem('token');
-}
-
-export function authHeader() {
-  const token = getCurrentUser();
-
-  if (token) {
-    return { Authorization: `Bearer ${token}` };
+class AuthService extends BaseService {
+  login = async (body: { email: string; password: string}) => {
+    return this.http.post('/auth/login', body);
   }
 
-  return {};
+  profile = async () => {
+    return this.http.get('/auth/profile');
+  }
 }
+
+export const authService = new AuthService();

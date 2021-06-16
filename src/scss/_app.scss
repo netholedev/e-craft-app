@@ -1,4 +1,6 @@
-// @import '~antd/dist/antd.css';
+@import './variables';
+@import './helpers';
+@import './public-layout';
 
 .logo {
   float: left;
@@ -6,8 +8,4 @@
   height: 31px;
   margin: 16px 24px 16px 0;
   background: rgba(255, 255, 255, 0.3);
-}
-
-.public-layout {
-  min-height: 100vh;
 }

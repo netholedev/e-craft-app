@@ -1,19 +1,19 @@
-import './scss/antd.css';
 import './scss/main.scss';
 
 import React, { FC, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { ConfigProvider, Layout } from 'antd';
 import i18n from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import { Locale } from 'antd/lib/locale-provider';
+import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
 
 import en from './locales/en-US.json';
 import tr from './locales/tr-TR.json';
 
-import { Home, AuthPage, About } from './pages';
-import { AuthProvider, useAuth } from './contexts';
-import { Header } from './components';
+import { AuthRouter } from './pages';
+import { PublicLayout, PublicRoute, PrivateLayout, PrivateRoute } from './components';
+
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -26,6 +26,7 @@ i18n.use(initReactI18next).init({
     escapeValue: false,
   },
 });
+
 const { Content } = Layout;
 
 const App: FC = () => {
@@ -42,23 +43,43 @@ const App: FC = () => {
     return;
   }, [i18n.language]);
 
+  const themes = {
+    dark: `${process.env.PUBLIC_URL}/antd-dark.css`,
+    light: `${process.env.PUBLIC_URL}/antd-light.css`,
+  };
+
   return (
-    <ConfigProvider locale={antLang}>
-      <Router>
-        <AuthProvider>
-          <Layout className="app">
-            <Content>
-              <Header />
-              <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/about" component={About} />
-                <Route path="/auth" component={AuthPage} />
-              </Switch>
-            </Content>
-          </Layout>
-        </AuthProvider>
-      </Router>
-    </ConfigProvider>
+    <ThemeSwitcherProvider defaultTheme="light" themeMap={themes}>
+      <ConfigProvider locale={antLang}>
+        <Router>
+            <Layout className="app">
+              <Content>
+                <Switch>
+                  <PrivateRoute
+                    exact
+                    path="/"
+                    component={(props: any) => (
+                      <PrivateLayout
+                        {...props}
+                        component={AuthRouter}
+                      />
+                    )}
+                  />
+
+                  <PublicRoute
+                    path="/auth"
+                    component={(props: any) => (
+                      <PublicLayout>
+                        <AuthRouter {...props} />
+                      </PublicLayout>
+                    )}
+                  />
+                </Switch>
+              </Content>
+            </Layout>
+        </Router>
+      </ConfigProvider>
+    </ThemeSwitcherProvider>
   );
 };
 
