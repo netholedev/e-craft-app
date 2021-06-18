@@ -2,7 +2,6 @@
 /* stylelint-disable no-duplicate-selectors */
 /* stylelint-disable */
 /* stylelint-disable declaration-bang-space-before,no-duplicate-selectors,string-no-newline */
-/* stylelint-disable at-rule-empty-line-before,at-rule-name-space-after,at-rule-no-unknown */
 [class^=ant-]::-ms-clear,
 [class*= ant-]::-ms-clear,
 [class^=ant-] input::-ms-clear,
@@ -24881,7 +24880,4 @@ div.ant-typography-edit-content.ant-typography-rtl {
 .ant-upload-list-rtl.ant-upload-list-picture-card .ant-upload-list-item-file + .ant-upload-list-item-name {
   margin: 8px 0 0;
   padding: 0;
-}
-body {
-  background-color: red !important;
 }

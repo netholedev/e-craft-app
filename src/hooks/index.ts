@@ -1,1 +1,1 @@
-export * from './use-name.hook';
+export * from './use-token.hook';
