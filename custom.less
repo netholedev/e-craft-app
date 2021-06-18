@@ -1,5 +1,29 @@
-@btn-padding-horizontal-base: 50px;
-@btn-padding-horizontal-lg: 50px;
-@btn-padding-horizontal-sm: 50px;
+// vertical paddings
+@padding-lg: 28px; // containers
+@padding-md: 20px; // small containers and buttons
+@padding-sm: 16px; // Form controls and items
+@padding-xs: 12px; // small items
+@padding-xss: 8px; // more small
 
 @font-size-base: 14px; // major text font size
+
+@border-radius-base: 6px !important; // major border radius
+
+@font-size-base: 14px;
+@font-size-lg: @font-size-base + 2px;
+@font-size-sm: 12px;
+
+@heading-1-size: ceil(@font-size-base * 2.71);
+@heading-2-size: ceil(@font-size-base * 2.14);
+@heading-3-size: ceil(@font-size-base * 1.71);
+@heading-4-size: ceil(@font-size-base * 1.42);
+@heading-5-size: ceil(@font-size-base * 1.14);
+// https://github.com/ant-design/ant-design/issues/20210
+@line-height-base: 1.5715;
+
+@btn-font-size-lg: @font-size-lg;
+@btn-font-size-sm: @font-size-base;
+
+@btn-padding-horizontal-base: @padding-md - 1px;
+@btn-padding-horizontal-lg: @btn-padding-horizontal-base;
+@btn-padding-horizontal-sm: @padding-xs - 1px;

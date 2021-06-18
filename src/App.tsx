@@ -13,7 +13,7 @@ import tr from './locales/tr-TR.json';
 
 import { AuthRouter } from './pages';
 import { PublicLayout, PublicRoute, PrivateLayout, PrivateRoute } from './components';
-
+import { AuthProvider } from './contexts';
 
 i18n.use(initReactI18next).init({
   resources: {
@@ -49,21 +49,17 @@ const App: FC = () => {
   };
 
   return (
-    <ThemeSwitcherProvider defaultTheme="light" themeMap={themes}>
-      <ConfigProvider locale={antLang}>
-        <Router>
+    <AuthProvider>
+      <ThemeSwitcherProvider defaultTheme="light" themeMap={themes}>
+        <ConfigProvider locale={antLang}>
+          <Router>
             <Layout className="app">
               <Content>
                 <Switch>
                   <PrivateRoute
                     exact
                     path="/"
-                    component={(props: any) => (
-                      <PrivateLayout
-                        {...props}
-                        component={AuthRouter}
-                      />
-                    )}
+                    component={(props: any) => <PrivateLayout {...props} component={AuthRouter} />}
                   />
 
                   <PublicRoute
@@ -77,9 +73,10 @@ const App: FC = () => {
                 </Switch>
               </Content>
             </Layout>
-        </Router>
-      </ConfigProvider>
-    </ThemeSwitcherProvider>
+          </Router>
+        </ConfigProvider>
+      </ThemeSwitcherProvider>
+    </AuthProvider>
   );
 };
 

@@ -15,5 +15,9 @@
     height: 100%;
     position: fixed;
     background-color: $light-purple;
+    object-fit: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
   }
 }

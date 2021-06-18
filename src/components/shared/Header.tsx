@@ -1,7 +1,9 @@
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Menu, Switch, Input } from 'antd';
-import { useThemeSwitcher } from "react-css-theme-switcher";
+import { useThemeSwitcher } from 'react-css-theme-switcher';
+
+import { authContext } from '../../contexts';
 
 const { Header: AntHeader } = Layout;
 
@@ -9,13 +11,14 @@ export const Header: FC = () => {
   const [isDarkMode, setIsDarkMode] = React.useState();
   const { switcher, currentTheme, status, themes } = useThemeSwitcher();
 
+  const { setToken, logout } = useContext<any>(authContext);
+
   const toggleTheme = (isChecked: any) => {
     setIsDarkMode(isChecked);
     switcher({ theme: isChecked ? themes.dark : themes.light });
   };
 
-  // Avoid theme change flicker
-  if (status === "loading") {
+  if (status === 'loading') {
     return null;
   }
 
@@ -29,8 +32,8 @@ export const Header: FC = () => {
         <Menu.Item key="2">
           <Switch checked={isDarkMode} onChange={toggleTheme} />
         </Menu.Item>
-        <Menu.Item key="3">
-          <Link to="/auth">Auth</Link>
+        <Menu.Item key="3" onClick={() => logout()}>
+          Logout
         </Menu.Item>
       </Menu>
     </AntHeader>

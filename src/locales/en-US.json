@@ -4,13 +4,15 @@
   },
   "FIELDS": {
     "EMAIL": "Email",
-    "PASSWORD": "Password"
+    "PASSWORD": "Password",
+    "PASSWORD_AGAIN": "Password Again"
   },
   "ACTIONS": {
     "SUBMIT": "Submit"
   },
   "ERRORS": {
     "INVALID_EMAIL": "Please enter a valid email address",
-    "INVALID_VALUE": "Please enter a valid value"
+    "INVALID_VALUE": "Please enter a valid value",
+    "PASSWORDS_DONT_MATCH": "Passwords dont match"
   }
 }
