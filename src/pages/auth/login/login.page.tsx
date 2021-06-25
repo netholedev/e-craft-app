@@ -1,5 +1,5 @@
 import React, { FC, useContext } from 'react';
-import { Alert, Button, Checkbox, Form, Input, Typography } from 'antd';
+import { Alert, Button, Checkbox, Form, Input, Typography, notification } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { authService } from '../../../services';
@@ -25,9 +25,12 @@ export const LoginPage: FC = () => {
       .login(val)
       .then(({ data }) => setToken(data.data.token))
       .catch((err) => {
-        setLoading(false);
-        console.log(err!);
-      });
+        notification.error({
+          message: i18n.t('ERRORS.UNSUCCESSFULL'),
+          description: i18n.t('ERRORS.INVALID_USER_CREDENTIALS'),
+        });
+      })
+      .finally(() => setLoading(false));
   };
 
   return (

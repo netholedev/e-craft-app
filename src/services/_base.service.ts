@@ -1,4 +1,4 @@
-import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import { API_URL } from '../constants';
 
 abstract class BaseService {
@@ -11,7 +11,7 @@ abstract class BaseService {
       if (this.token) {
         config.headers.Authorization = `Bearer ${this.token}`;
       }
-  
+
       return config;
     });
   }

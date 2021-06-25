@@ -12,6 +12,14 @@ class AuthService extends BaseService {
   forgotPassword = async (body: { email: string }) => {
     return this.http.post('/auth/forgot-password', body);
   };
+
+  checkCode = async (params: { code: string }) => {
+    return this.http.get('/auth/check-code', { params });
+  };
+
+  renewPassword = async (body: { password: string; code: string }) => {
+    return this.http.put('/auth/renew-password', body);
+  };
 }
 
 export const authService = new AuthService();

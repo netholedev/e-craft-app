@@ -13,6 +13,9 @@
   "ERRORS": {
     "INVALID_EMAIL": "Please enter a valid email address",
     "INVALID_VALUE": "Please enter a valid value",
-    "PASSWORDS_DONT_MATCH": "Passwords dont match"
+    "PASSWORDS_DONT_MATCH": "Passwords dont match",
+    "INVALID_USER_CREDENTIALS": "Invalid user credentials",
+    "INVALID_CODE": "Invalid code",
+    "UNSUCCESSFULL": "Unsuccessfull"
   }
 }
