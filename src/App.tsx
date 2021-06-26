@@ -13,15 +13,17 @@ import tr from './locales/tr-TR.json';
 
 import { AuthRouter } from './pages';
 import { PublicLayout, PublicRoute, PrivateLayout, PrivateRoute } from './components';
-import { AuthProvider } from './contexts';
+import { AuthProvider, LanguageProvider } from './contexts';
+
+const language = localStorage.getItem('lang') || 'en-US';
 
 i18n.use(initReactI18next).init({
   resources: {
     'en-US': { translation: en },
     'tr-TR': { translation: tr },
   },
-  lng: 'en-US',
-  fallbackLng: 'en-US',
+  lng: language,
+  fallbackLng: language,
   interpolation: {
     escapeValue: false,
   },
@@ -49,34 +51,36 @@ const App: FC = () => {
   };
 
   return (
-    <AuthProvider>
-      <ThemeSwitcherProvider defaultTheme="light" themeMap={themes}>
-        <ConfigProvider locale={antLang}>
-          <Router>
-            <Layout className="app">
-              <Content>
-                <Switch>
-                  <PrivateRoute
-                    exact
-                    path="/"
-                    component={(props: any) => <PrivateLayout {...props} component={AuthRouter} />}
-                  />
+    <LanguageProvider>
+      <AuthProvider>
+        <ThemeSwitcherProvider defaultTheme="light" themeMap={themes}>
+          <ConfigProvider locale={antLang}>
+            <Router>
+              <Layout className="app">
+                <Content>
+                  <Switch>
+                    <PrivateRoute
+                      exact
+                      path="/"
+                      component={(props: any) => <PrivateLayout {...props} component={AuthRouter} />}
+                    />
 
-                  <PublicRoute
-                    path="/auth"
-                    component={(props: any) => (
-                      <PublicLayout>
-                        <AuthRouter {...props} />
-                      </PublicLayout>
-                    )}
-                  />
-                </Switch>
-              </Content>
-            </Layout>
-          </Router>
-        </ConfigProvider>
-      </ThemeSwitcherProvider>
-    </AuthProvider>
+                    <PublicRoute
+                      path="/auth"
+                      component={(props: any) => (
+                        <PublicLayout>
+                          <AuthRouter {...props} />
+                        </PublicLayout>
+                      )}
+                    />
+                  </Switch>
+                </Content>
+              </Layout>
+            </Router>
+          </ConfigProvider>
+        </ThemeSwitcherProvider>
+      </AuthProvider>
+    </LanguageProvider>
   );
 };
 

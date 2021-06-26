@@ -1,5 +1,10 @@
 {
   "GENERAL": {
     "HELLO": "Selam"
+  },
+  "FIELDS": {
+    "EMAIL": "Email",
+    "PASSWORD": "Parola",
+    "PASSWORD_AGAIN": "Parola Tekrar"
   }
 }

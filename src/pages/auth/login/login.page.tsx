@@ -42,18 +42,7 @@ export const LoginPage: FC = () => {
       onFinish={onSubmit}
       className="flex flex-column justify-center w-100"
     >
-      <div className="sign-up-text">
-        <Text type="secondary">
-          Don’t have an account? {profile?.email}
-          <Text strong type="success" style={{ marginLeft: 0.5 + 'rem' }}>
-            Sign up now
-          </Text>
-        </Text>
-      </div>
-
       <img className="sign-in-logo" src={Logo}></img>
-
-      {/* <Alert type="error" message="Error text" banner /> */}
 
       <Form.Item
         name="email"

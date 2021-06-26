@@ -88,17 +88,17 @@ const data = [
 ];
 
 // rowSelection objects indicates the need for row selection
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  },
-  onSelect: (record, selected, selectedRows) => {
-    console.log(record, selected, selectedRows);
-  },
-  onSelectAll: (selected, selectedRows, changeRows) => {
-    console.log(selected, selectedRows, changeRows);
-  },
-};
+// const rowSelection = {
+//   onChange: (selectedRowKeys: string, selectedRows: string) => {
+//     console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+//   },
+//   onSelect: (record: object, selected: string, selectedRows: object) => {
+//     console.log(record, selected, selectedRows);
+//   },
+//   onSelectAll: (selected: string, selectedRows: object, changeRows: object) => {
+//     console.log(selected, selectedRows, changeRows);
+//   },
+// };
 
 export const CompaniesPage = () => {
   const [checkStrictly, setCheckStrictly] = React.useState(false);
@@ -109,7 +109,7 @@ export const CompaniesPage = () => {
       </Space>
       <Table
         columns={columns}
-        rowSelection={{ ...rowSelection, checkStrictly }}
+        // rowSelection={{ ...rowSelection, checkStrictly }}
         dataSource={data}
       />
     </>
