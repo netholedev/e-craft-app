@@ -103,7 +103,7 @@ const data = [
 export const CompaniesPage = () => {
   const [checkStrictly, setCheckStrictly] = React.useState(false);
   return (
-    <>
+    <div style={{ width: '100%', backgroundColor: '#fff', padding: 30, height: '100%'}}>
       <Space align="center" style={{ marginBottom: 16 }}>
         CheckStrictly: <Switch checked={checkStrictly} onChange={setCheckStrictly} />
       </Space>
@@ -112,6 +112,7 @@ export const CompaniesPage = () => {
         // rowSelection={{ ...rowSelection, checkStrictly }}
         dataSource={data}
       />
-    </>
+
+    </div>
   );
 };

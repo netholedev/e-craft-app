@@ -1,0 +1,41 @@
+.private-layout {
+  &--header {
+    display: flex;
+    align-items: center;
+    height: 80px !important;
+    justify-content: space-between;
+    padding: 0 1.5rem !important;
+    box-shadow: 0 1px 4px -1px rgb(0 0 0 / 15%);
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #fff !important;
+  }
+
+  &--logo {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  
+  &--sider {
+    z-index: 999;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: none !important;
+    box-shadow: 0 1px 4px -1px rgb(0 0 0 / 15%) !important;
+    margin-top: 75px !important;
+  }
+
+  &--menu {
+    height: 100%;
+  }
+
+  &--content {
+    background-color: #FAFAFB;
+    margin-top: 75px !important;
+    padding: 30px;
+  }
+}

@@ -1,7 +1,7 @@
 import './scss/main.scss';
 
 import React, { FC, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { ConfigProvider, Layout } from 'antd';
 import i18n from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
@@ -11,7 +11,7 @@ import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
 import en from './locales/en-US.json';
 import tr from './locales/tr-TR.json';
 
-import { AuthRouter } from './pages';
+import { AuthRouter, CompaniesRouter, ErrorsRouter } from './pages';
 import { PublicLayout, PublicRoute, PrivateLayout, PrivateRoute } from './components';
 import { AuthProvider, LanguageProvider } from './contexts';
 
@@ -71,7 +71,9 @@ const App: FC = () => {
                       exact
                       path="/"
                       component={(props: any) => (
-                        <PrivateLayout {...props} component={AuthRouter} />
+                        <PrivateLayout {...props}>
+                          <CompaniesRouter {...props} />
+                        </PrivateLayout>
                       )}
                     />
 
@@ -80,6 +82,15 @@ const App: FC = () => {
                       component={(props: any) => (
                         <PublicLayout>
                           <AuthRouter {...props} />
+                        </PublicLayout>
+                      )}
+                    />
+
+                    <Route
+                      path="*"
+                      component={(props: any) => (
+                        <PublicLayout>
+                          <ErrorsRouter {...props} />
                         </PublicLayout>
                       )}
                     />

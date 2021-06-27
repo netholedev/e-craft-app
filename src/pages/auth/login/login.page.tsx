@@ -44,7 +44,7 @@ export const LoginPage: FC = () => {
       onFinish={onSubmit}
       className="flex flex-column justify-center w-100"
     >
-      <img className="sign-in-logo" src={Logo}></img>
+      <img className="sign-in-logo" src={Logo} />
 
       <Form.Item
         name="email"

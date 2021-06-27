@@ -18,7 +18,7 @@ export const AuthRouter = ({ match }: RouteComponentProps<TParams>) => {
       <PublicRoute exact path={`${url}/login`} component={LoginPage} />
       <PublicRoute exact path={`${url}/forgot-password`} component={ForgotPasswordPage} />
       <PublicRoute exact path={`${url}/renew-password/:code`} component={RenewPasswordPage} />
-      <Redirect to="/auth/login" />
+      <Redirect to="/errors/not-found" />
     </Switch>
   );
 };
