@@ -12,6 +12,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     async function getProfile() {
+      setLoading(true);
       try {
         const { data } = await authService.profile();
         setProfile(data.data);

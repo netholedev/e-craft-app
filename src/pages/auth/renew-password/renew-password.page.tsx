@@ -1,9 +1,9 @@
 import React, { FC, useState, useEffect, useContext } from 'react';
-import { Button, Form, Input, Typography, Spin, notification } from 'antd';
+import { Button, Form, Input, Spin, notification } from 'antd';
 import { useTranslation } from 'react-i18next';
-import { Link, useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { authContext } from '../../../contexts';
-
+import { CenterLoading } from '../../../components/shared';
 import { authService } from '../../../services';
 import Logo from '../../../assets/logo.svg';
 import { LoadingOutlined } from '@ant-design/icons';
@@ -21,7 +21,8 @@ export const RenewPasswordPage: FC = () => {
   const { code } = useParams<{ code: string }>();
   const history = useHistory();
   const [isValidCode, setIsValidCode] = useState<boolean>(false);
-  const { setLoading, loading, setToken } = useContext<any>(authContext);
+  const { setToken } = useContext<any>(authContext);
+  const [loading, setLoading] = useState(false);
 
   const handleCodeValid = (val: { code: string }) => {
     setLoading(true);
@@ -71,9 +72,7 @@ export const RenewPasswordPage: FC = () => {
   return (
     <>
       {loading && (
-        <div className="flex justify-center items-center vh-100">
-          <Spin indicator={antIcon} />
-        </div>
+        <CenterLoading />
       )}
 
       {isValidCode && !loading && (

@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { Alert, Button, Checkbox, Form, Input, Typography, notification } from 'antd';
 import { useTranslation } from 'react-i18next';
 
@@ -17,7 +17,8 @@ const layout = {
 export const LoginPage: FC = () => {
   const { i18n } = useTranslation();
   const [form] = Form.useForm();
-  const { setToken, profile, setLoading, loading } = useContext<any>(authContext);
+  const { setToken } = useContext<any>(authContext);
+  const [loading, setLoading] = useState(false);
 
   const onSubmit = (val: { email: string; password: string }) => {
     setLoading(true);
