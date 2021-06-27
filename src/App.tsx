@@ -36,6 +36,14 @@ const App: FC = () => {
 
   const [antLang, setAntLang] = useState<Locale>({ locale: i18n.language });
 
+  /*
+  const cachedLang = localStorage.getItem('lang');
+
+  if (cachedLang) {
+    i18n.changeLanguage(cachedLang);
+  }
+  */
+
   const changeLangName = (lang: string): string => lang.replace('-', '_');
 
   useEffect(() => {
@@ -62,7 +70,9 @@ const App: FC = () => {
                     <PrivateRoute
                       exact
                       path="/"
-                      component={(props: any) => <PrivateLayout {...props} component={AuthRouter} />}
+                      component={(props: any) => (
+                        <PrivateLayout {...props} component={AuthRouter} />
+                      )}
                     />
 
                     <PublicRoute

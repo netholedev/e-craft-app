@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode, useEffect } from 'react';
+import React, { createContext, ReactNode } from 'react';
 import i18n from 'i18next';
 
 export const languageContext = createContext({});
@@ -10,11 +10,12 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
     localStorage.setItem('lang', lang);
     i18n.changeLanguage(lang);
 
-    window.location.reload();
-  }
+    // window.location.reload();
+    return;
+  };
 
   return (
-    <languageContext.Provider value={{ setLanguage, language}}>
+    <languageContext.Provider value={{ setLanguage, language }}>
       {children}
     </languageContext.Provider>
   );
