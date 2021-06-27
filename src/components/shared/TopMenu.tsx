@@ -37,7 +37,7 @@ const { logout } = useContext<any>(authContext);
         <Button className="u-m-l-3" icon={<UserOutlined />}/>
       </Tooltip>
       <Tooltip title="Logout">
-        <Button className="u-m-l-3" icon={<LogoutOutlined />} onClick={logout} />
+        <Button type="primary" className="u-m-l-3" icon={<LogoutOutlined />} onClick={logout} />
       </Tooltip>
     </div>
   );
