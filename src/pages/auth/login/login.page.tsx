@@ -1,5 +1,5 @@
 import React, { FC, useContext, useState } from 'react';
-import { Alert, Button, Checkbox, Form, Input, Typography, notification } from 'antd';
+import { Button, Form, Input, Typography, notification } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { authService } from '../../../services';
