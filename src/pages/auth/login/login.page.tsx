@@ -1,10 +1,11 @@
 import React, { FC, useContext } from 'react';
-import { Alert, Button, Checkbox, Form, Input, Typography, notification } from 'antd';
+import { Button, Form, Input, Typography, notification } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import { authService } from '../../../services';
 import { authContext } from '../../../contexts';
 import Logo from '../../../assets/logo.svg';
+
 import { Link } from 'react-router-dom';
 
 const { Text } = Typography;
